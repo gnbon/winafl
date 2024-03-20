@@ -186,7 +186,7 @@
 
 #ifdef MESSAGES_TO_STDOUT
 #  define SAYF(...)    printf(__VA_ARGS__)
-#else 
+#else
 #  define SAYF(...)    fprintf(stderr, __VA_ARGS__)
 #endif /* ^MESSAGES_TO_STDOUT */
 
@@ -260,13 +260,13 @@
 #define ck_write(fd, buf, len, fn) do { \
     u32 _len = (len); \
     s32 _res = _write(fd, buf, _len); \
-    if (_res != _len) RPFATAL(_res, "Short write to %s", fn); \
+    if (_res != _len) RPFATAL(_res, "Short write to %s, fd %d (%d of %d bytes)", fn, fd, buf, len); \
   } while (0)
 
 #define ck_read(fd, buf, len, fn) do { \
     u32 _len = (len); \
     s32 _res = _read(fd, buf, _len); \
-    if (_res != _len) RPFATAL(_res, "Short read from %s", fn); \
+    if (_res != _len) RPFATAL(_res, "Short read from %s, fd %d (%d of %d bytes)", fn, fd, buf, len); \
   } while (0)
 
 
